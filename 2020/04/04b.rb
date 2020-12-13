@@ -66,7 +66,6 @@ valid_passport_count = 0
 
 IO.read('input.txt').split("\n\n").each do|raw_passport_entry|
   passport = Passport.new(raw_passport_entry)
-  puts (passport.valid? ? '' : 'IN') + 'VALID: ' + passport.fieldpairs.inspect #if passport.value_for(:byr) && ! passport.byr_valid?
   valid_passport_count += 1 if passport.valid?
 end
 
