@@ -49,5 +49,3 @@ end
 
 puts "TREE COUNT LIST: #{tree_count_list.inspect}"
 puts "ADVENT ANSWER IS #{tree_count_list.inject(:*)}"
-
-# 1061775000 is wrong (too low)
