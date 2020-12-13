@@ -14,7 +14,6 @@ class Passport
 
   def valid?
     required_fields = %w[byr iyr eyr hgt hcl ecl pid]
-    optional_fields = %w[cid]
     fields_in_use = @fieldpairs.map(&:first).uniq
     required_fields_in_use = fields_in_use & required_fields
     required_fields_in_use.length == required_fields.length
