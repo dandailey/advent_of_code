@@ -20,27 +20,10 @@ class Passport
   end
 
   def valid?
-    # return false unless contains_all_required_fields?
     REQUIRED_FIELDS.each do |fieldname|
       return false unless send("#{fieldname}_valid?")
     end
   end
-
-  # def contains_all_required_fields?
-  #   fields_in_use = @fieldpairs.map(&:first).uniq
-  #   required_fields_in_use = fields_in_use & REQUIRED_FIELDS
-  #   required_fields_in_use.length == REQUIRED_FIELDS.length
-  # end
-
-# byr (Birth Year) - four digits; at least 1920 and at most 2002.
-# iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-# eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
-# hgt (Height) - a number followed by either cm or in:
-# If cm, the number must be at least 150 and at most 193.
-# If in, the number must be at least 59 and at most 76.
-# hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-# ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-# pid (Passport ID) - a nine-digit number, including leading zeroes.
 
   def byr_valid?
     v = value_for(:byr)
