@@ -1,15 +1,3 @@
-class PassportList
-  attr_accessor :passport_list
-
-  def initialize; @passport_list = []; end
-
-  def load_from_file(filename)
-    IO.read(filename).split("\n\n").each do|raw_passport_entry|
-      @passport_list << Passport.new(raw_passport_entry)
-    end
-  end
-end
-
 class Passport
   attr_accessor :fieldpairs
 
@@ -33,13 +21,10 @@ class Passport
   end
 end
 
-
 valid_passport_count = 0
 
-passport_list = PassportList.new
-passport_list.load_from_file('input.txt')
-
-passport_list.passport_list.each do |passport|
+IO.read('input.txt').split("\n\n").each do|raw_passport_entry|
+  passport = Passport.new(raw_passport_entry)
   valid_passport_count += 1 if passport.valid?
 end
 
