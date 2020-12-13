@@ -1,9 +1,9 @@
 instructions = IO.read('input.txt')
 
-x_pos = 0
-y_pos = 0
-directions = %w[E S W N]
-current_direction_index = 0
+ship_x = 0
+ship_y = 0
+waypoint_dx = 10
+waypoint_dy = 1
 
 instructions.split("\n").each do |line|
   if match_parts = line.match(/([NSEWLRF])([0-9]+)/)
@@ -12,40 +12,47 @@ instructions.split("\n").each do |line|
 
     output = line
 
-    if directions.include? code
-      direction = code
-      output += "  :: GO #{direction} #{units}"
+    if %w[E S W N].include? code
+      case code
+        when 'N'
+          waypoint_dy += units
+        when 'S'
+          waypoint_dy -= units
+        when 'E'
+          waypoint_dx += units
+        when 'W'
+          waypoint_dx -= units
+        else
+          raise 'BAD DIRECTION'
+      end
+      output += "  :: WAYPOINT #{code} #{units}"
 
     elsif %w[L R].include? code
       quarter_turns = units / 90
-      current_direction_index += (code == 'L' ? -1 : 1) * quarter_turns
-      current_direction_index %= directions.length
-      direction = directions[current_direction_index]
-      output += "  :: POINT #{direction}"
+      quarter_turns.times do
+        if code == 'L'
+          waypoint_dy *= -1
+          waypoint_dy, waypoint_dx = waypoint_dx, waypoint_dy
+        else
+          waypoint_dx *= -1
+          waypoint_dy, waypoint_dx = waypoint_dx, waypoint_dy
+        end
+      end
+      output += "  :: WAYPOINT ROTATE #{code}"
 
       units = 0
     elsif code == 'F'
-      direction = directions[current_direction_index]
-      output += "  :: GO FORWARD (#{direction}) #{units}"
+      units.times do
+        ship_x += waypoint_dx
+        ship_y += waypoint_dy
+      end
+      output += "  :: FOLLOW WAYPOINT #{units} TIMES"
 
     else
       raise 'BAD CODE'
     end
 
-    case direction
-      when 'N'
-        y_pos += units
-      when 'S'
-        y_pos -= units
-      when 'E'
-        x_pos += units
-      when 'W'
-        x_pos -= units
-      else
-        raise 'BAD DIRECTION'
-    end
-
-    output += "  :: now at (#{x_pos}, #{y_pos}) pointing #{directions[current_direction_index]}"
+    output += "  :: ship now at (#{ship_x}, #{ship_y}) waypoint is at (#{waypoint_dx}, #{waypoint_dy})"
 
     puts output
   else
@@ -53,4 +60,4 @@ instructions.split("\n").each do |line|
   end
 end; nil
 
-puts "ENDING AT #{x_pos}, #{y_pos}"
+puts "ENDING AT #{ship_x}, #{ship_y}"
