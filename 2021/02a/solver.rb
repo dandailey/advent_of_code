@@ -1,0 +1,21 @@
+class Solver
+  def calculate_answer
+    instruction_list = input_lines
+    h_pos = 0
+    depth = 0
+
+    instruction_list.each do |instruction|
+      cmd, val = *(instruction.split(' '))
+      log instruction
+      if cmd == 'forward'
+        h_pos += val.to_i
+        log "H Pos is now #{h_pos}"
+      else
+        depth += val.to_i * (cmd == 'down' ? 1 : -1)
+        log "Depth is now #{depth}"
+      end
+    end
+
+    h_pos * depth
+  end
+end
