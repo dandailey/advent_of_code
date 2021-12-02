@@ -60,7 +60,13 @@ params = {
 
 if ARGV.length > 0 && ARGV[0].upcase == 'SETUP'
   unless File.exist?('solver.rb')
-    IO.write('solver.rb', "class Solver\n  def calculate_answer\n  end\nend\n\n")
+    IO.write('solver.rb', <<-HEREDOC
+class Solver
+  def calculate_answer
+  end
+end
+HEREDOC
+)
   end
 
   for i in 1 ... ARGV.length
@@ -68,7 +74,8 @@ if ARGV.length > 0 && ARGV[0].upcase == 'SETUP'
       year = matchdata[1]
       day = matchdata[2]
       page_content = open_url("https://adventofcode.com/#{year}/day/#{day.to_i}/input")
-      IO.write('input.txt', page_content) unless File.exist?('input.txt')
+      # this line isn't working without being authenticated... something to do later?
+      # IO.write('input.txt', page_content) unless File.exist?('input.txt')
     end
   end
 

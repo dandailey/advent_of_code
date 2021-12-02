@@ -20,9 +20,9 @@ Now, from the command line, if the folder were named `01a` run:
 You will get your answer, and it will be written to a file called `answer.txt`
 
 The command line accepts optional arguments:
-  - `DEBUG` - runs with sample input and does not save the answer
-  - `OUTPUT` - if log statements are present in your code, they'll be shown
-  - `INSTRUCTIONS` - outputs the contents of an optional `instructions.txt` file
+  - `debug` - runs with sample input and does not save the answer
+  - `output` - if log statements are present in your code, they'll be shown
+  - `instructions` - outputs the contents of an optional `instructions.txt` file
 
 Within your `calculate_answer` method, you have access to an `input` method, which will be the contents of either `input.txt` or `input.sample.txt`, depending on whether you're running in debug mode or not. Manual methods are available for `real_input` and `sample_input`
 
