@@ -1,3 +1,9 @@
+From this folder, just run something like `ruby setup.rb 01a`. This will create a folder called `01a`, copy `main.rb` into the folder, and uses `main.rb` to stub out the needed files within that new folder.
+
+If you'd rather do it yourself, though:
+
+---
+
 Copy `main.rb` into it's own folder, then run `ruby main.rb setup`. This will create files called `solver.rb`, `input.txt`, and `input.sample.txt`. If you pass an argument that looks like a year/day combination (ex: `2021/01`) it will attempt to load `input.txt` with your actual input.
 
 Each solution folder should have it's own copy of `main.rb`, which can be ran from the command line to actually execute the solution. It expects to find a file called `solver.rb` to exist which defines the following:
@@ -40,6 +46,6 @@ Available Methods:
 
 - `instructions`: the contents of `instructions.txt`
 
-======
+---
 
 NOTE: a separate copy of `main.rb` is in each solution folder to eliminate dependancies. `main.rb` is expected to evolve over time, which could break old solutions. The latest version is always to be defined here, and copied to each folder to be modified as needed.
