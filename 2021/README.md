@@ -1,4 +1,6 @@
-Each solution folder has a `main.rb` that can be ran from the command line to actually run the solution. It expects to find a file called `solver.rb` to exist which defines the following:
+Copy `main.rb` into it's own folder, then run `ruby main.rb setup`. This will create files called `solver.rb`, `input.txt`, and `input.sample.txt`. If you pass an argument that looks like a year/day combination (ex: `2021/01`) it will attempt to load `input.txt` with your actual input.
+
+Each solution folder should have it's own copy of `main.rb`, which can be ran from the command line to actually execute the solution. It expects to find a file called `solver.rb` to exist which defines the following:
 
 ```
 class Solver
