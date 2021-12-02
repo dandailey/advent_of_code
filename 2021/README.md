@@ -1,4 +1,4 @@
-Create a folder with an alphanumeric name. In that folder, add a file called `solver.rb` which defines the following:
+Each solution folder has a `main.rb` that can be ran from the command line to actually run the solution. It expects to find a file called `solver.rb` to exist which defines the following:
 
 ```
 class Solver
@@ -37,3 +37,7 @@ Available Methods:
 - `input_lines`: a parsed array of lines from `input`
 
 - `instructions`: the contents of `instructions.txt`
+
+======
+
+NOTE: a separate copy of `main.rb` is in each solution folder to eliminate dependancies. `main.rb` is expected to evolve over time, which could break old solutions. The latest version is always to be defined here, and copied to each folder to be modified as needed.
