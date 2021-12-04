@@ -37,6 +37,10 @@ module AdventTools
 
   def input_lines; @input_lines ||= input.split("\n"); end
 
+  def input_line_count; @input_line_count ||= input_lines.length; end
+
+  def input_line_length; @input_line_length ||= input_lines.first.length; end
+
   def log(val); self.output_log ||= []; self.output_log << val; end
 
   def calculate_answer; 0; end
