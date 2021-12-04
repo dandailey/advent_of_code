@@ -1,8 +1,6 @@
 class Solver
   SIDE_LENGTH = 5
 
-  def marked_board_list; @marked_board_list ||= [[nil] * (SIDE_LENGTH**2)] * board_list.length; end
-
   def input_parts; @input_parts ||= input.split("\n\n"); end
 
   def called_numbers; @called_numbers ||= input_parts.first.split(','); end
