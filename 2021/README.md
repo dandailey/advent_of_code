@@ -28,9 +28,9 @@ Now, from the command line, if the folder were named `01a` run:
 You will get your answer, and it will be written to a file called `answer.txt`
 
 The command line accepts some optional arguments:
-  - `debug` - runs with sample input and does not save the answer
-  - `output` - if log statements are present in your code, they'll be shown
-  - `instructions` - outputs the contents of an optional `instructions.txt` file
+  - `debug` - Runs with sample input and does not save the answer.
+  - `output` - If log statements are present in your code, they'll be shown. Automatically turned on when in debug mode`.
+  - `instructions` - Outputs the contents of an optional `instructions.txt` file.
 
 # Available Methods
 

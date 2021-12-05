@@ -12,7 +12,7 @@ module AdventTools
 
   def initialize(params = {})
     self.debug = params[:debug] == true
-    self.show_output = params[:show_output] == true
+    self.show_output = self.debug || params[:show_output] == true
     self.show_instructions = params[:show_instructions] == true
     self.output_log = []
   end
