@@ -48,6 +48,10 @@ Within your `calculate_answer` method, you have access to an `input` method, whi
 
 - `instructions`: the contents of `instructions.txt`
 
+# Hooks For Before and After Solving
+
+You may optionally define methods named `before_run` and `after_run`, which will be executed at the beginning and end of executing the solution (effectively, before and after running your `calculate_answer` method)
+
 # Dealing With Evolution
 
 NOTE: a separate copy of `main.rb` is in each solution folder to eliminate dependancies. `main.rb` is expected to evolve over time, which could break old solutions. The latest version is always to be defined here, and copied to each folder to be modified as needed. That way a frozen copy of it is in each folder, which is known to work for that solution.

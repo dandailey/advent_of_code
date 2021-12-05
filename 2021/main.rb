@@ -15,9 +15,10 @@ module AdventTools
     self.show_output = params[:show_output] == true
     self.show_instructions = params[:show_instructions] == true
     self.output_log = []
-    self.answer = self.calculate_answer
-    self.save_answer unless self.debug
   end
+
+  def before_run; end
+  def after_run; end
 
   def instructions
     IO.read('instructions.txt')
@@ -44,11 +45,18 @@ module AdventTools
   def save_answer; IO.write('answer.txt', answer); end
 
   def run
+    before_run
+
     puts instructions if show_instructions
+
+    self.answer = self.calculate_answer
+    self.save_answer unless self.debug
 
     puts self.output_log.each { |line| puts line } if show_output
 
     puts "ADVENT ANSWER: #{answer}"
+
+    after_run
   end
 
 end
