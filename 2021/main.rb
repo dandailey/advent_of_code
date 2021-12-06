@@ -38,7 +38,7 @@ module AdventTools
 
   def input_lines; @input_lines ||= input.split("\n"); end
 
-  def log(val); self.output_log ||= []; self.output_log << val; end
+  def log(val); self.output_log << val; end
 
   def calculate_answer; 0; end
 
@@ -52,7 +52,7 @@ module AdventTools
     self.answer = self.calculate_answer
     self.save_answer unless self.debug
 
-    puts self.output_log.each { |line| puts line } if show_output
+    self.output_log.each { |line| puts line } if show_output
 
     puts "ADVENT ANSWER: #{answer}"
 
