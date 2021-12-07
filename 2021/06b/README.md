@@ -1,0 +1,3 @@
+# I Half Cheated
+
+Since this puzzle was the same as the first part, just bigger and thus all about effeciency, I did make it more efficient... but not enough so to get an answer in a reasonable amount of time. I ended up leaving it to run overnight and got the answer in the morning. I'd like to refactor at some point...
