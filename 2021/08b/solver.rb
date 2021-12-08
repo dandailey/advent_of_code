@@ -59,7 +59,6 @@ class InputLine
 
   def segments_for_adg; signal_patterns_by_length[5].map{|v| v.split('')}.inject(:&); end
   def segments_for_bcef; segments_for_8 - segments_for_adg; end
-  def segments_for_ef; segments_for_4 - segments_for_1; end
   def segments_for_eg; segments_for_8 - segments_for_4 - segments_for_7; end
   def segments_for_be; segments_for_8 - segments_for_adg - segments_for_1; end
   def segments_for_bd; segments_for_4 - segments_for_1; end
@@ -123,7 +122,6 @@ class Solver
       log "segments_for_2: #{input_line.segments_for_2}"
       log "segments_for_adg: #{input_line.segments_for_adg}"
       log "segments_for_bcef: #{input_line.segments_for_bcef}"
-      log "segments_for_ef: #{input_line.segments_for_ef}"
       log "segments_for_eg: #{input_line.segments_for_eg}"
       log "segments_for_be: #{input_line.segments_for_be}"
       log "segments_for_bd: #{input_line.segments_for_bd}"
