@@ -13,7 +13,8 @@ class CodeLine
     '>' => 25137,
   }
 
-  INCOMPLETION_POINT_MAP = INVALIDITY_POINT_MAP.keys.each_with_index.map{ |char, i| [char, i + 1] }.to_h
+  INCOMPLETION_POINT_MAP = INVALIDITY_POINT_MAP.keys.each_with_index.
+    map{ |char, i| [char, i + 1] }.to_h
 
   def initialize(code_line)
     self.code_line = code_line
@@ -22,8 +23,8 @@ class CodeLine
 
   def characters; @characters ||= self.code_line.split ''; end
 
-  def opening_brackets; BRACKET_PAIRS.map(&:first); end
-  def closing_brackets; BRACKET_PAIRS.map(&:last); end
+  def opening_brackets; @opening_brackets ||= BRACKET_PAIRS.map(&:first); end
+  def closing_brackets; @closing_brackets ||= BRACKET_PAIRS.map(&:last); end
 
   def parse_line
     @open_bracket_stack = []
@@ -51,14 +52,18 @@ class CodeLine
     expected_closer_for open_bracket_stack.last
   end
 
-  def completion_sequence; open_bracket_stack.reverse.map{ |char| expected_closer_for char }; end
+  def completion_sequence
+    @completion_sequence ||= \
+      open_bracket_stack.reverse.map{ |char| expected_closer_for char }
+  end
 
   def invalid?; ! first_invalid_character_index.nil?; end
   def incomplete?; first_invalid_character_index.nil?; end
 
-  def first_invalid_character; characters[first_invalid_character_index]; end
+  def first_invalid_character; invalid? ? characters[first_invalid_character_index] : nil; end
 
   def invalidity_points; invalid? ? INVALIDITY_POINT_MAP[first_invalid_character] : 0; end
+
   def incompletion_points
     score = 0
     if incomplete?
